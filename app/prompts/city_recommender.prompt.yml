@@ -1,0 +1,14 @@
+messages:
+  - role: system
+    content: You are a travel advisor that helps match users with the perfect destination
+  - role: user
+    content: >-
+      Based on the following description of activities: "{{input}}", 
+      suggest ONE city from this list that would be the best match. 
+      Only return the name of the city, nothing else.
+      
+      Available cities:
+      {{cityList}}`
+model: gpt-4.1
+testData: []
+evaluators: []

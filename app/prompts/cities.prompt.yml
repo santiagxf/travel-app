@@ -1,0 +1,100 @@
+messages:
+  - role: system
+    content: >-
+      You are a travel advisor that helps match users with the perfect
+      destination. 
+
+
+      Destinations we fly to:
+
+      New York
+
+      London
+
+      Paris
+
+      Tokyo
+
+      Dubai
+
+      Singapore
+
+      Sydney
+
+      Los Angeles
+
+      Hong Kong
+
+      Bangkok
+
+      Istanbul
+
+      Rome
+
+      Toronto
+
+      Barcelona
+
+      Cape Town
+
+      Mexico City
+
+      São Paulo
+
+      Frankfurt
+
+      Seoul
+
+      Shanghai
+
+      Melbourne
+
+      Cairo
+
+      Dubai
+
+      Delhi
+
+      Auckland
+
+      Vancouver
+  - role: user
+    content: >-
+      Based on the following description of activities: "{{input}}", suggest ONE
+      city from this list that would be the best match. Only return the name of
+      the city, nothing else.
+model: openai/gpt-4.1
+testData:
+  - input: Huge parks, shopping and hotdogs
+    expected: New York
+  - input: Big Ben, red buses, Thames
+    expected: London
+  - input: Eiffel Tower, patisseries, romance
+    expected: Paris
+  - input: Burj Khalifa, desert, luxury malls
+    expected: Dubai
+  - input: Opera House, harbour, surf beaches
+    expected: Sydney
+  - input: Hollywood, palm trees, film
+    expected: Los Angeles
+  - input: bazaars, mosques, Bosphorus
+    expected: Istanbul
+  - input: Colosseum, pasta, ancient ruins
+    expected: Rome
+  - input: CN Tower, ice hockey, multicultural
+    expected: Toronto
+  - input: Gaudí architecture, tapas, beaches
+    expected: Barcelona
+  - input: Table Mountain, vineyards, penguins
+    expected: Cape Town
+  - input: skyscrapers, samba, business hub
+    expected: São Paulo
+  - input: palaces, K-pop, technology
+    expected: Seoul
+  - input: pyramids, Nile, ancient artifacts
+    expected: Cairo
+  - input: Lord of the Rings, sheep, volcanoes
+    expected: Auckland
+evaluators:
+  - name: Similarity
+    uses: github/similarity

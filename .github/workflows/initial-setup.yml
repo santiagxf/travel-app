@@ -1,0 +1,28 @@
+name: "Hydrate Issues"
+on:
+  # Manual run with parameter for what to do
+  workflow_dispatch:
+  # Automatic run when this is first created from a template
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/.run-once
+
+permissions: 
+  issues: write
+  contents: read
+
+jobs:
+  seed_issues:
+    if: github.event.repository.is_template == false && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.2.2
+    - run: |
+        chmod +x ./create-issues.sh
+        ./create-issues.sh
+      shell: bash
+      working-directory: .github/workflows/scripts # Updated working directory
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

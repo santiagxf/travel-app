@@ -1,0 +1,28 @@
+name: Use GitHub Models
+
+on:
+  workflow_dispatch:
+
+permissions:
+  models: read
+
+jobs:
+  call-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call GitHub Models
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl "https://models.github.ai/inference/chat/completions" \
+             -H "Content-Type: application/json" \
+             -H "Authorization: Bearer $GITHUB_TOKEN" \
+             -d '{
+              "messages": [
+                  {
+                     "role": "user",
+                     "content": "Generate CSV data for test purposes containing information for 10 cities. Each row should include the following columns: 'City','Description','LatLong'. Ensure proper line breaks are included after each row in the output. Only return the CSV data without any additional explanation or preamble."
+                  }
+               ],
+               "model": "openai/gpt-4.1"
+            }'

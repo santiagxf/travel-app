@@ -1,0 +1,13 @@
+messages:
+  - role: system
+    content: >-
+      Given a transcript of a chat session with the user of an online travel
+      booking site for Contoso Airways, summarize the conversation between the
+      customer and the agent into max 2 sentences.  Focus on what the main
+      problems where the customer was dealing with and what the resolution of
+      the issue was in that session
+  - role: user
+    content: '{{input}}'
+model: Phi-3-mini-128k-instruct
+modelParameters:
+  max_completion_tokens: 800

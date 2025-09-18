@@ -1,0 +1,19 @@
+name: Issue Image A18y
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  models: read
+  issues: write
+  contents: read
+
+jobs:
+  Alt-Text:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add missing Alt Text
+        uses: benbalter/alt-text-generator-action@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCOPELESS_PAT: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,3 @@
+The purpose of this file is to cause a trigger of a workflow when this repo is first created from a template.  If you modify this file later and commit the code, it will re-run that workflow, which will create new issues.
+
+You can also create issues via a manual workflow dispatch.
